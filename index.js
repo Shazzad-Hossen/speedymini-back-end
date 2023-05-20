@@ -126,13 +126,15 @@ async function run() {
    //await client.close();
   }
 }
-run().catch(console.dir);
+run().then(()=>{
+  app.listen(port,()=>{
+    console.log(`Server is running at http://localhost:${port}`)
+})
+
+}).catch(console.dir);
 
 app.get('/',(req,res)=>{
     res.send('Backend is Running');
 
 });
 
-app.listen(port,()=>{
-    console.log(`Server is running at http://localhost:${port}`)
-})
